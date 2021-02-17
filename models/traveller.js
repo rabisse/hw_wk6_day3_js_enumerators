@@ -22,14 +22,14 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
   return this.journeys.reduce((totalSoFar, journey) => totalSoFar + journey.distance, 0)
 };
 
+
 Traveller.prototype.getUniqueModesOfTransport = function () {
-  const uniqueList = []
-  this.journeys.forEach((journey) => {
-    if (uniqueList.forEach((item) !== journey.transport)) {
-      uniqueList.push(journey.transport)}
-  })
-  return uniqueList
-// tried using a filter and indexOf but couldn't get to work either
+  return this.journeys.map(journey => journey.transport).filter((value, index, self) => self.indexOf(value) === index)
 };
+// HOW DOES THIS WORK????
+
+
+// array.map(item => item.age)
+//   .filter((value, index, self) => self.indexOf(value) === index)
 
 module.exports = Traveller;
