@@ -15,7 +15,7 @@ Traveller.prototype.getJourneysByTransport = function (transport) {
 };
 
 Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
-  return this.journeys.filter((journey) => journey.distance > minDistance)
+  return this.journeys.filter((journey) => journey.distance >= minDistance)
 };
 
 Traveller.prototype.calculateTotalDistanceTravelled = function () {
@@ -24,10 +24,8 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
 
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
-  return this.journeys.map(journey => journey.transport).filter((value, index, self) => self.indexOf(value) === index)
+  return this.journeys.map(journey => journey.transport).filter((value, index, array) => array.indexOf(value) === index)
 };
-// HOW DOES THIS WORK????
-
 
 // array.map(item => item.age)
 //   .filter((value, index, self) => self.indexOf(value) === index)
